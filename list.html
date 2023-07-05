@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="layout.css">
     <script src="list.js"></script>
     <title>Document</title>
+    <!-- 
+        http : 서버가 로그인을 통해 나를 확인 (단방향 인증)
+        https : 공인인증서로 서버를 확인 (양방향 인증)
+        https 인 netlify에서 http 인 sample.bmaster 로 ajax로 보내면 CORS
+     -->
     <script>
         $(document).ready(async function () {
             const pageno = getPageno();
@@ -17,7 +22,8 @@
             if(result===null){
                 alert('잘못된 경로입니다.');
                 location.href = 'index.html';
-            } 
+            };
+            printContacts(result);
             
         });
         
@@ -53,7 +59,7 @@
                         <tbody id="tbody"></tbody>
                     </table>
                     <ul class="pagination" id="pagination">
-                        
+
                     </ul>
                 </div>
             </section>
