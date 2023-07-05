@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+
+/*
+    reset : 전체선택자로 리셋하면 전부 다 적용되니 구체적인 리셋해야 한다. → reset.css를 골라 CDN 사용!
+ */
+
+header * {
+    margin : 0;
+    padding: 0;
+}
+
+#page {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+header, nav, footer {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin: 15px 0;
+}
+
+header {
+    font-family: 'Nanum Gothic', sans-serif;
+    letter-spacing: 2em;
+}
+aside {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+
+section {
+    width: 800px;
+    min-height: 600px;
+    background-color: #f2f2f2;
+}
+
+main {
+    display: flex;
+}
