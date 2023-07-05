@@ -31,14 +31,18 @@ aside {
     height: 100px;
     width: 100px;
     background-color: red;
+    float: left;
 }
 
 section {
     width: 800px;
     min-height: 600px;
     background-color: #f2f2f2;
+    float: left;
 }
 
 main {
     display: flex;
+    overflow: hidden;
+    background-color: aliceblue
 }

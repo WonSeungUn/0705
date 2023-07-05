@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="layout.css">
     <script src="read.js"></script>
     <title>Document</title>
+    <script>
+        $(document).ready(async function () {
+            const no = getNo();
+            console.log(no);
+        const result = await fetch(no);
+        if(result ===null) {
+            location.href ="list.html";
+        }
+        console.log(result);
+        console.log(printContact(result));
+
+
+
+        })
+    </script>
 </head>
 <body>
     <div id="page">
@@ -19,7 +34,14 @@
         </nav>
         <main>
             <aside></aside>
-            <section></section>
+            <section>
+                <ul>
+                    <li><img id="photo"></li>
+                    <li id="name"></li>
+                    <li id="address"></li>
+                    <li id="tel"></li>
+                </ul>
+            </section>
             <aside></aside>
         </main>
         <footer>

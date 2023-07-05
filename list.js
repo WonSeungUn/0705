@@ -33,7 +33,7 @@ function printContacts ({contacts}){
         const html = `
             <tr>
             <td>${c.no}</td>
-            <td><a href ="read.html?pageno=${c.no}">${c.name}</a></td>
+            <td><a href ="read.html?no=${c.no}">${c.name}</a></td>
             <td>${c.address}</td>
             <td>${c.tel}</td>
             </tr>
@@ -41,3 +41,58 @@ function printContacts ({contacts}){
         $tbody.append(html);
     };
 };
+
+//pagination 에 필요한 prev, start, end, next, pageno를 리턴하는 함수
+
+// getPagination(result) → result에서 pageno, pagesize, totalcount 를 꺼내는 문법
+// 구조분해할당
+
+function getPagination({pageno, pagesize, totalcount, blocksize=5}){
+    // 페이지의 개수 계산
+    const countofpage = Math.ceil(totalcount/pagesize);
+
+    // prev , start, end, next 를 계산한 다음 목록의 끝에 도달한 경우 end , next 를 변경
+    const prev = Math.floor((pageno-1)/blocksize) * blocksize;
+    const start = prev + 1;
+    let end = prev + blocksize;
+    let next = end +1;
+    if(end >= countofpage){
+        end = countofpage;
+        next = 0;
+    };
+
+    // 구조분해할당 : 객체 → 변수로 분해 , 변수를 모아서 객체를 생성
+    // return {prev:prev , start:start , end;end , next:next , pageno:pageno}
+    return {prev, start, end, next, pageno};
+};
+
+function printPagination ({prev, start, end, next, pageno}) {
+    const $pagination = $('#pagination');
+    if(prev >0){
+        const html = `
+        <li class="page-item">
+        <a class="page-link" href="list.html?pageno=${prev}">Previous</a>
+        </li>
+        `;
+        $pagination.append(html);
+    };
+
+    for(let i =start ; i<=end ; i++){
+        let li_class = i === pageno? 'page-item active' : 'page-item';
+        const html = `
+        <li class="${li_class}">
+        <a class="page-link" href="list.html?pageno=${i}">${i}</a>
+        </li>
+        `
+        $pagination.append(html);
+    };
+
+    if(next>0){
+        const html = `
+        <li class="page-item">
+        <a class="page-link" href="list.html?pageno=${next}">Next</a>
+        </li>
+        `;
+        $pagination.append(html);
+    };
+}

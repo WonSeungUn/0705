@@ -24,6 +24,8 @@
                 location.href = 'index.html';
             };
             printContacts(result);
+            const $pagination = getPagination(result);
+            printPagination($pagination);
             
         });
         
@@ -46,8 +48,7 @@
         <main>
             <aside></aside>
             <section>
-                <div id="section">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>번호</th>
@@ -58,10 +59,9 @@
                         </thead>
                         <tbody id="tbody"></tbody>
                     </table>
-                    <ul class="pagination" id="pagination">
+                    <ul class="pagination" id="pagination" style="display: flex; justify-content: center;">
 
                     </ul>
-                </div>
             </section>
             <aside></aside>
         </main>
